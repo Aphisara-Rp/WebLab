@@ -1,61 +1,246 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<style>
-body {font-family: "Lato", sans-serif;}
-
-.sidebar {
-  height: 100%;
-  width: 160px;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  background-color: #111;
-  overflow-x: hidden;
-  padding-top: 16px;
-}
-
-.sidebar a {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #818181;
-  display: block;
-}
-
-.sidebar a:hover {
-  color: #f1f1f1;
-}
-
-.main {
-  margin-left: 160px; /* Same as the width of the sidenav */
-  padding: 0px 10px;
-}
-
-@media screen and (max-height: 450px) {
-  .sidebar {padding-top: 15px;}
-  .sidebar a {font-size: 18px;}
-}
-</style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css"> <!-- ลิงก์ไปยัง style.css -->
 </head>
 <body>
 
 <div class="sidebar">
-  <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a href="#services"><i class="fa fa-fw fa-wrench"></i> Services</a>
-  <a href="#clients"><i class="fa fa-fw fa-user"></i> Clients</a>
-  <a href="#contact"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-</div>
+  <!-- ส่วนโลโก้ + ไตเติ้ล -->
+  <div class="sidebar-header">
+    <img src="logo.png" alt="Logo" class="logo">
+  </div>
 
-<div class="main">
+  <!-- เมนู
+  <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="#content"><i class="fa fa-fw fa-file"></i> Content</a>
+  <a href="#cost"><i class="fa fa-fw fa-tags"></i> Cost</a>
+  <a href="#member"><i class="fa fa-fw fa-user"></i> Member</a>
+  <a href="#inventory"><i class="fa fa-fw fa-cubes"></i> Inventory</a> -->
+
+  <div class="nav-menu">
+            <div class="nav-item">
+                <a href="#home" class="nav-link">
+                    <div class="fa fa-fw fa-home"></div>
+                    Home
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link active">
+                    <div class="fa fa-fw fa-file"></div>
+                    Content
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <div class="fa fa-fw fa-tags"></div>
+                    Cost
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <div class="fa fa-fw fa-user"></div>
+                    Member
+                </a>
+            </div>
+            <div class="nav-item">
+                <a href="#" class="nav-link">
+                    <div class="fa fa-fw fa-cubes"></div>
+                    Inventory
+                </a>
+            </div>
+        </div>
+
+</div>
+<!-- <div class="main">
   <h2>Sidebar with Icons</h2>
   <p>This side navigation is of full height (100%) and always shown.</p>
   <p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
   <p>Lorem ipsum dolor sit amet, illum definitiones no quo, maluisset concludaturque et eum, altera fabulas ut quo. Atqui causae gloriatur ius te, id agam omnis evertitur eum. Affert laboramus repudiandae nec et. Inciderint efficiantur his ad. Eum no molestiae voluptatibus.</p>
-</div>
+</div> -->
      
+<div class="main-content">
+        <div class="content-header">
+            <h1 class="content-title">Content</h1>
+            <div class="tabs">
+                <button class="tab active">Overview</button>
+                <button class="tab">News</button>
+                <button class="tab">Publication</button>
+                <button class="tab">Research Grant</button>
+                <button class="tab">What We Have Done</button>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <form id="contentForm">
+                <div class="form-group">
+                    <label class="form-label">
+                        Story URL (English) <span class="required">*</span>
+                    </label>
+                    <input type="url" class="form-input" placeholder="https://" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        Topic <span class="required">*</span>
+                    </label>
+                    <input type="text" class="form-input" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">
+                        Category <span class="required">*</span>
+                    </label>
+                    <select class="form-select" required>
+                        <option value="">เลือกหมวดหมู่</option>
+                        <option value="news">ข่าว</option>
+                        <option value="research">งานวิจัย</option>
+                        <option value="publication">สิ่งพิมพ์</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Description</label>
+                    <div class="toolbar">
+                        <button type="button" class="toolbar-btn" onclick="formatText('bold')">B</button>
+                        <button type="button" class="toolbar-btn" onclick="formatText('italic')">I</button>
+                        <button type="button" class="toolbar-btn" onclick="formatText('underline')">U</button>
+                        <button type="button" class="toolbar-btn">📷</button>
+                        <button type="button" class="toolbar-btn">A</button>
+                        <button type="button" class="toolbar-btn">•</button>
+                        <button type="button" class="toolbar-btn">1.</button>
+                        <button type="button" class="toolbar-btn">⋯</button>
+                        <button type="button" class="toolbar-btn">&lt;/&gt;</button>
+                    </div>
+                    <textarea class="form-textarea" id="description" placeholder="พิมพ์คำอธิบาย..."></textarea>
+                </div>
+
+                <div class="date-row">
+                    <div class="form-group">
+                        <label class="form-label">
+                            Start Date <span class="required">*</span>
+                        </label>
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">
+                            Stop Date <span class="required">*</span>
+                        </label>
+                        <input type="date" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox-container">
+                            <input type="checkbox" id="schedulePost">
+                            <label for="schedulePost">Schedule Post</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Type</label>
+                    <select class="form-select">
+                        <option value="">เลือกประเภท</option>
+                        <option value="article">บทความ</option>
+                        <option value="news">ข่าว</option>
+                        <option value="event">กิจกรรม</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Author</label>
+                    <select class="form-select">
+                        <option value="">เลือกผู้เขียน</option>
+                        <option value="admin">Admin</option>
+                        <option value="editor">Editor</option>
+                        <option value="writer">Writer</option>
+                    </select>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', function() {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Navigation functionality
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        // Text formatting for description
+        function formatText(command) {
+            const textarea = document.getElementById('description');
+            const start = textarea.selectionStart;
+            const end = textarea.selectionEnd;
+            const selectedText = textarea.value.substring(start, end);
+            
+            let formattedText = '';
+            switch(command) {
+                case 'bold':
+                    formattedText = `**${selectedText}**`;
+                    break;
+                case 'italic':
+                    formattedText = `*${selectedText}*`;
+                    break;
+                case 'underline':
+                    formattedText = `_${selectedText}_`;
+                    break;
+                default:
+                    formattedText = selectedText;
+            }
+            
+            textarea.value = textarea.value.substring(0, start) + formattedText + textarea.value.substring(end);
+            textarea.focus();
+        }
+
+        // Form submission
+        document.getElementById('contentForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+
+        // Cancel button
+        document.querySelector('.btn-secondary').addEventListener('click', function() {
+            if (confirm('Are you sure you want to cancel? All changes will be lost.')) {
+                document.getElementById('contentForm').reset();
+            }
+        });
+
+        // Log out button
+        document.querySelector('.btn-link').addEventListener('click', function() {
+            if (confirm('Are you sure you want to log out?')) {
+                alert('Logged out successfully!');
+            }
+        });
+
+        // Schedule post checkbox
+        document.getElementById('schedulePost').addEventListener('change', function() {
+            if (this.checked) {
+                console.log('Schedule post enabled');
+            } else {
+                console.log('Schedule post disabled');
+            }
+        });
+    </script>
+</div>
+
+
 </body>
 </html>
